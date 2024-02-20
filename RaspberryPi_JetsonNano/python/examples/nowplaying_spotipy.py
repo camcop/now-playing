@@ -2,10 +2,11 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import os
 from dotenv import load_dotenv
+import logging
 
 try:
     load_dotenv()
-except ImportError:
+except:
     logging.warning('No dotenv found')
 
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=os.environ["SPOTIPY_CLIENT_ID"],

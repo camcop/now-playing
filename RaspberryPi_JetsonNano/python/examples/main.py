@@ -1,7 +1,7 @@
 import lastfm_user_data
 import draw
 import time
-
+import logging
 
 logging.basicConfig(level=logging.DEBUG)
 frequency = 5
