@@ -30,8 +30,8 @@ def main():
             
             logging.info("Drawing: ")
             # draw.draw_text(lastplayed_artist + " - " + lastplayed_track)
-            draw.draw_text_position(lastplayed_artist)
-            draw.draw_text_position(lastplayed_track, 'b')
+            draw.draw_text_position(lastplayed_artist, 'top')
+            draw.draw_text_position(lastplayed_track, 'bottom')
         
             previous_track_name = lastplayed_track
 

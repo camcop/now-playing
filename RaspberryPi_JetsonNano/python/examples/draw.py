@@ -43,7 +43,7 @@ def draw_text_position(text_to_draw, position):
     y = 0
 
 #  set to bottom half of screen if 'b'ottom is specified
-    if position == 'b':
+    if position == 'bottom':
         y = 50
 
     draw.text((0, y), text_to_draw, font = font15, fill = 0)
