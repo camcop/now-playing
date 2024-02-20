@@ -25,8 +25,8 @@ def main():
         else:
             logging.info("New data found from api - refreshing screen...")
 
-            logging.info("Clearing screen")
-            draw.clear_screen()
+            # logging.info("Clearing screen")
+            # draw.clear_screen()
             
             logging.info("Drawing: ")
             # draw.draw_text(lastplayed_artist + " - " + lastplayed_track)
