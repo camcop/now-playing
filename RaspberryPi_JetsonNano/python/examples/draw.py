@@ -35,8 +35,7 @@ def draw_text_top_bottom(text_to_draw_top, text_to_draw_bottom):
     font20 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 20)
     font30 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 30)
 
-    image = Image.new('1', (epd.height, epd.width), 255)
-    image = image.transpose(Image.Image.Transpose.ROTATE_180)  # 255: clear the frame    
+    image = Image.new('1', (epd.height, epd.width), 255).rotate(180)
     draw = ImageDraw.Draw(image)    
 
     draw.text((0, 0), text_to_draw_top, font = font30, fill = 0)
