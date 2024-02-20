@@ -54,7 +54,7 @@ while True:
             #print to the ink
             # ink_printer.print_text_to_ink (lastplayed_track, lastplayed_artist, lastplayed_album)
             logging.info(lastplayed_track, lastplayed_artist, lastplayed_album)
-            print(lastplayed_track, lastplayed_artist, lastplayed_album, played_all_time, played_this_year, played_this_month, played_this_week, played_today)
+            print(lastplayed_track, lastplayed_artist, lastplayed_album)
 
         # keep a record of the previous track name to see if it changes next time
         previous_track_name = lastplayed_track
