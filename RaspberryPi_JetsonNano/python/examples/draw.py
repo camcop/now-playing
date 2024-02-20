@@ -15,9 +15,6 @@ from PIL import Image,ImageDraw,ImageFont
 logging.basicConfig(level=logging.DEBUG)
 epd = epd2in13_V2.EPD()
 
-# def transpose():
-    # draw = draw.transpose(Image.ROTATE_180)
-
 def clear_screen():    
     epd.init(epd.FULL_UPDATE)
     epd.Clear(0xFF)
@@ -27,7 +24,7 @@ def draw_text(text_to_draw):
     font15 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 15)
     # font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
 
-    image = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame    
+    image = Image.new('1', (epd.height, epd.width), 255).transpose()  # 255: clear the frame    
     draw = ImageDraw.Draw(image)    
  
     draw.text((0, 0), text_to_draw, font = font15, fill = 0)
@@ -38,12 +35,11 @@ def draw_text_top_bottom(text_to_draw_top, text_to_draw_bottom):
     font20 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 20)
     font30 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 30)
 
-    image = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame    
+    image = Image.new('1', (epd.height, epd.width), 255).transpose()  # 255: clear the frame    
     draw = ImageDraw.Draw(image)    
 
     draw.text((0, 0), text_to_draw_top, font = font30, fill = 0)
     draw.text((0, 50), text_to_draw_bottom, font = font20, fill = 0)
-    draw = draw.transpose(Image.ROTATE_180)
     epd.display(epd.getbuffer(image))
 
 # try:
