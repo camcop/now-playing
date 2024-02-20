@@ -16,6 +16,9 @@ def main():
     except IndexError:
         logging.error("No username provided")
 
+    logging.info("Clearing screen")
+    draw.clear_screen()
+
     while True:
         logging.info("Checking API for last played: ")
         lastplayed_track, lastplayed_artist, lastplayed_album, lastplayed_image = lastfm_user_data.lastplayed(requested_username)
