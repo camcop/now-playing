@@ -4,12 +4,12 @@ import time
 import logging
 import sys
 
-logging.basicConfig(level=logging.DEBUG)
-frequency = 5
-requested_username = ""
-previous_track_name = ""
 
 def main():
+    logging.basicConfig(level=logging.DEBUG)
+    frequency = 5
+    requested_username = ""
+    previous_track_name = ""
 
     try:
         requested_username = sys.argv[1]
