@@ -21,12 +21,6 @@ def clear_screen():
 
 
 def draw_text(text_to_draw):
-    text_to_draw = ""
-    try:
-        text_to_draw = sys.argv[1]
-    except IndexError:
-        logging.error("no argument found")
-        return
     font15 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 15)
     # font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
 
@@ -43,7 +37,13 @@ try:
     logging.info("Clearing screen")
     clear_screen()
     
-    # logging.info("Drawing text: " + text_to_draw)
+    text_to_draw = ""
+    try:
+        text_to_draw = sys.argv[1]
+    except IndexError:
+        logging.error("no argument found")
+    logging.info("Drawing text: " + text_to_draw)
+
     draw_text(text_to_draw)
     time.sleep(5)
 
