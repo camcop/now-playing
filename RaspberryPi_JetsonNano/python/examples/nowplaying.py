@@ -28,7 +28,7 @@ def main():
             logging.info("Clearing screen")
             draw.clear_screen()
             
-            logging.info("Drawing: ", end = '')
+            logging.info("Drawing: ")
             draw.draw_text(lastplayed_artist + " - ", lastplayed_track)
         
             previous_track_name = lastplayed_track
