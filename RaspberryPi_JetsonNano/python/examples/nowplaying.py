@@ -3,18 +3,19 @@ import draw
 import time
 import logging
 import sys
+import os
 
 
 def main():
     logging.basicConfig(level=logging.DEBUG)
     frequency = 5
-    requested_username = ""
+    requested_username = os.environ.get('LAST_FM_USERNAME')
     previous_track_name = ""
 
-    try:
-        requested_username = sys.argv[1]
-    except IndexError:
-        logging.error("No username provided")
+    # try:
+    #     requested_username = sys.argv[1]
+    # except IndexError:
+    #     logging.error("No username provided")
 
     logging.info("Clearing screen")
     draw.clear_screen()
