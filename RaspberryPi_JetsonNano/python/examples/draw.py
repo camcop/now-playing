@@ -28,7 +28,7 @@ def draw_text(text_to_draw):
     image = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame    
     draw = ImageDraw.Draw(image)    
  
-    draw.text((120, 60), text_to_draw, font = font15, fill = 0)
+    draw.text((0, 0), text_to_draw, font = font15, fill = 0)
     epd.display(epd.getbuffer(image))
 
 
