@@ -15,6 +15,8 @@ from PIL import Image,ImageDraw,ImageFont
 logging.basicConfig(level=logging.DEBUG)
 epd = epd2in13_V2.EPD()
 
+# def transpose():
+    # draw = draw.transpose(Image.ROTATE_180)
 
 def clear_screen():    
     epd.init(epd.FULL_UPDATE)
@@ -41,6 +43,7 @@ def draw_text_top_bottom(text_to_draw_top, text_to_draw_bottom):
 
     draw.text((0, 0), text_to_draw_top, font = font30, fill = 0)
     draw.text((0, 50), text_to_draw_bottom, font = font20, fill = 0)
+    draw = draw.transpose(Image.ROTATE_180)
     epd.display(epd.getbuffer(image))
 
 # try:
