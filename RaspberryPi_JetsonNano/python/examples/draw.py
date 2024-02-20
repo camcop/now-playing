@@ -32,6 +32,23 @@ def draw_text(text_to_draw):
     epd.display(epd.getbuffer(image))
 
 
+def draw_text_position(text_to_draw, position):
+    font15 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 30)
+    # font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
+
+    image = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame    
+    draw = ImageDraw.Draw(image)    
+ 
+#  define vertical position of text
+    y = 0
+
+#  set to bottom half of screen if 'b'ottom is specified
+    if position == 'b':
+        y = 50
+
+    draw.text((0, y), text_to_draw, font = font15, fill = 0)
+    epd.display(epd.getbuffer(image))
+
 # try:
 #     epd = epd2in13_V2.EPD()
 
