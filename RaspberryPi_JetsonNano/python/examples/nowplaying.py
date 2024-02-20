@@ -36,5 +36,5 @@ def main():
         logging.info("Waiting " + str(frequency) + " seconds")
         time.sleep(frequency)
 
-if __name__=="main":
+if __name__== "__main__":
     main()
