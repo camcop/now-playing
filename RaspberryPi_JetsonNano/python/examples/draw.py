@@ -14,7 +14,7 @@ from PIL import Image,ImageDraw,ImageFont
 
 logging.basicConfig(level=logging.DEBUG)
 epd = epd2in13_V2.EPD()
-fnt = ImageFont.truetype("Pillow/Tests/fonts/FreeMono.ttf", 40)
+# fnt = ImageFont.truetype("Pillow/Tests/fonts/FreeMono.ttf", 40)
 
 def clear_screen():    
     epd.init(epd.FULL_UPDATE)
