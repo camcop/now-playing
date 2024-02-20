@@ -14,6 +14,7 @@ from PIL import Image,ImageDraw,ImageFont
 
 logging.basicConfig(level=logging.DEBUG)
 epd = epd2in13_V2.EPD()
+fnt = ImageFont.truetype("Pillow/Tests/fonts/FreeMono.ttf", 40)
 
 def clear_screen():    
     epd.init(epd.FULL_UPDATE)
@@ -36,12 +37,11 @@ def draw_text_top_bottom(text_to_draw_top, text_to_draw_bottom):
     font30 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 30)
 
     image = Image.new('1', (epd.height, epd.width), 255)
-    # image = image.rotate(180)
     draw = ImageDraw.Draw(image)    
 
     draw.multiline_text((0, 0), text_to_draw_top, font = font30, fill = 0)
     draw.multiline_text((0, 50), text_to_draw_bottom, font = font20, fill = 0)
-    epd.display(epd.getbuffer(image))
+    epd.display(epd.getbuffer(image.rotate(180)))
 
 # try:
 #     epd = epd2in13_V2.EPD()
