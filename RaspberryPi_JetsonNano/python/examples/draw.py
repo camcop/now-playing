@@ -20,7 +20,8 @@ def clear_screen():
     epd.Clear(0xFF)
 
 
-def draw_text(string: text_to_draw):
+def draw_text(text_to_draw):
+    text_to_draw = ""
     try:
         text_to_draw = sys.argv[1]
     except IndexError:
