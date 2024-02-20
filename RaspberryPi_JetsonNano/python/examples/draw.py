@@ -13,6 +13,7 @@ import time
 from PIL import Image,ImageDraw,ImageFont
 
 logging.basicConfig(level=logging.DEBUG)
+epd = epd2in13_V2.EPD()
 
 
 def clear_screen():    
@@ -26,37 +27,37 @@ def draw_text(text_to_draw):
 
     image = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame    
     draw = ImageDraw.Draw(image)    
-
+ 
     draw.text((120, 60), text_to_draw, font = font15, fill = 0)
     epd.display(epd.getbuffer(image))
 
 
-try:
-    epd = epd2in13_V2.EPD()
+# try:
+#     epd = epd2in13_V2.EPD()
 
-    logging.info("Clearing screen")
-    clear_screen()
+#     logging.info("Clearing screen")
+#     clear_screen()
     
-    text_to_draw = ""
-    try:
-        text_to_draw = sys.argv[1]
-    except IndexError:
-        logging.error("no argument found")
-    logging.info("Drawing text: " + text_to_draw)
+#     text_to_draw = ""
+#     try:
+#         text_to_draw = sys.argv[1]
+#     except IndexError:
+#         logging.error("no argument found")
+#     logging.info("Drawing text: " + text_to_draw)
 
-    draw_text(text_to_draw)
-    time.sleep(5)
+#     draw_text(text_to_draw)
+#     time.sleep(5)
 
-    logging.info("Clearing screen")
-    clear_screen()
+#     logging.info("Clearing screen")
+#     clear_screen()
     
-    logging.info("Going to sleep...")
-    epd.sleep()
+#     logging.info("Going to sleep...")
+#     epd.sleep()
         
-except IOError as e:
-    logging.info(e)
+# except IOError as e:
+#     logging.info(e)
     
-except KeyboardInterrupt:    
-    logging.info("ctrl + c:")
-    epd2in13_V2.epdconfig.module_exit(cleanup=True)
-    exit()
+# except KeyboardInterrupt:    
+#     logging.info("ctrl + c:")
+#     epd2in13_V2.epdconfig.module_exit(cleanup=True)
+#     exit()
