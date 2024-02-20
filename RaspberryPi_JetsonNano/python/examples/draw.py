@@ -43,7 +43,7 @@ try:
     logging.info("Clearing screen")
     clear_screen()
     
-    logging.info("Drawing text: " + text_to_draw)
+    # logging.info("Drawing text: " + text_to_draw)
     draw_text(text_to_draw)
     time.sleep(5)
 
