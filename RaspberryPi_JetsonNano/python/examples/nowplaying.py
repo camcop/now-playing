@@ -7,6 +7,7 @@ import sys
 logging.basicConfig(level=logging.DEBUG)
 frequency = 5
 requested_username = ""
+previous_track_name = ""
 
 def main():
 
