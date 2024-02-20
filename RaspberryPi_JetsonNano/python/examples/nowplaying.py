@@ -17,7 +17,7 @@ def main():
         logging.error("No username provided")
 
     while True:
-        print ("Checking API for last played: ", end = '')
+        logging.info("Checking API for last played: ")
         lastplayed_track, lastplayed_artist, lastplayed_album, lastplayed_image = lastfm_user_data.lastplayed(requested_username)
         
         if lastplayed_track == previous_track_name:  #check if the track name is same as what we displayed last time
