@@ -32,7 +32,7 @@ def main():
             # draw.draw_text(lastplayed_artist + " - " + lastplayed_track)
             # draw.draw_text_position(lastplayed_artist, 'top')
             # draw.draw_text_position(lastplayed_track, 'bottom')
-            draw.draw_text_top_bottom(lastplayed_artist, lastplayed_track)
+            draw.draw_text_top_bottom(lastplayed_track, lastplayed_artist)
         
             previous_track_name = lastplayed_track
 

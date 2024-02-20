@@ -33,16 +33,14 @@ def draw_text(text_to_draw):
 
 
 def draw_text_top_bottom(text_to_draw_top, text_to_draw_bottom):
-    # font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
-    font30 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
-
-    use_font = font30
+    font20 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 20)
+    font30 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 30)
 
     image = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame    
     draw = ImageDraw.Draw(image)    
 
     draw.text((0, 0), text_to_draw_top, font = font30, fill = 0)
-    draw.text((0, 50), text_to_draw_bottom, font = font30, fill = 0)
+    draw.text((0, 50), text_to_draw_bottom, font = font20, fill = 0)
     epd.display(epd.getbuffer(image))
 
 # try:
