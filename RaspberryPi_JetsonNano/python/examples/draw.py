@@ -14,7 +14,6 @@ from PIL import Image,ImageDraw,ImageFont
 
 logging.basicConfig(level=logging.DEBUG)
 
-text_to_draw = input()
 
 def clear_screen():    
     epd.init(epd.FULL_UPDATE)
@@ -22,6 +21,11 @@ def clear_screen():
 
 
 def draw_text(string: text_to_draw):
+    try:
+        text_to_draw = sys.argv[1]
+    except IndexError:
+        logging.error("no argument found")
+        return
     font15 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 15)
     # font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
 
