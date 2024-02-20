@@ -4,13 +4,23 @@ import time
 import logging
 import sys
 import os
+from dotenv import load_dotenv
 
+try:
+    load_dotenv()
+except ImportError:
+    logging.warning("No dotenv found")
 
 def main():
     logging.basicConfig(level=logging.DEBUG)
     frequency = 5
-    requested_username = os.environ.get('LAST_FM_USERNAME')
     previous_track_name = ""
+
+    requested_username = os.environ.get("LAST_FM_USERNAME")
+    if requested_username is None:
+        logging.error("No username specified. Exiting")
+        return
+    logging.info("Requesting currently playing for username: " + requested_username)
 
     # try:
     #     requested_username = sys.argv[1]
