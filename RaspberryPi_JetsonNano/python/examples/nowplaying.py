@@ -14,7 +14,9 @@ except ImportError:
 def main():
     logging.basicConfig(level=logging.DEBUG)
     frequency = 5
-    previous_track_name = ""
+    previous_track_name = ''
+    previous_image_name = ''
+    album_cover = 'album_cover.jpg'
 
     requested_username = os.environ.get("LAST_FM_USERNAME")
     if requested_username is None:
@@ -51,11 +53,15 @@ def main():
             # draw.draw_text_position(lastplayed_artist, 'top')
             # draw.draw_text_position(lastplayed_track, 'bottom')
             # draw.text_top_bottom(lastplayed_track, lastplayed_artist)
-            album_cover = get_album_cover.fetch_image(lastplayed_image)
+            if lastplayed_image == previous_image_name:  #check if the track name is same as what we displayed last time
+                logging.info("No change to album cover - using same image")
+            else:
+                get_album_cover.fetch_image(lastplayed_image)
             # draw.image(album_cover)
             draw.image_and_text(album_cover, lastplayed_track, lastplayed_artist)
         
             previous_track_name = lastplayed_track
+            previous_image_name = lastplayed_image
 
 
         logging.info("Waiting " + str(frequency) + " seconds")
