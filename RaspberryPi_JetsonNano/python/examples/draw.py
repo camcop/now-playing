@@ -21,7 +21,7 @@ def clear_screen():
     epd.Clear(0xFF)
 
 
-def draw_text(text_to_draw):
+def text(text_to_draw):
     font15 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 15)
     # font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
 
@@ -32,7 +32,7 @@ def draw_text(text_to_draw):
     epd.display(epd.getbuffer(image))
 
 
-def draw_text_top_bottom(text_to_draw_top, text_to_draw_bottom):
+def text_top_bottom(text_to_draw_top, text_to_draw_bottom):
     font20 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 20)
     font30 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 30)
 
@@ -42,6 +42,12 @@ def draw_text_top_bottom(text_to_draw_top, text_to_draw_bottom):
     draw.multiline_text((0, 0), text_to_draw_top, font = font30, fill = 0)
     draw.multiline_text((0, 50), text_to_draw_bottom, font = font20, fill = 0)
     epd.display(epd.getbuffer(image.rotate(180)))
+
+def image(image_to_draw):
+    image = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame    
+    draw = ImageDraw.Draw(image)
+
+    epd.display(epd.getbuffer(image_to_draw))
 
 # try:
 #     epd = epd2in13_V2.EPD()
