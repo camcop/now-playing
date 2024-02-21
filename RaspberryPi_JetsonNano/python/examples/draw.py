@@ -66,7 +66,7 @@ def image(image_filename):
 
 
 def image_and_text(image_filename, text_to_draw_top, text_to_draw_bottom):
-    font = font_profiles.get('franie')
+    font = font_profiles.get('default')
     
     image = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame    
     draw = ImageDraw.Draw(image)
