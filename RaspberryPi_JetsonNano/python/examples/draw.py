@@ -39,8 +39,8 @@ def text_top_bottom(text_to_draw_top, text_to_draw_bottom):
     image = Image.new('1', (epd.height, epd.width), 255)
     draw = ImageDraw.Draw(image)    
 
-    draw.multiline_text((0, 0), text_to_draw_top, font = font30, fill = 0)
-    draw.multiline_text((0, 50), text_to_draw_bottom, font = font20, fill = 0)
+    draw.text((0, 0), text_to_draw_top, font = font30, fill = 0)
+    draw.text((0, 50), text_to_draw_bottom, font = font20, fill = 0)
     epd.display(epd.getbuffer(image.rotate(180)))
 
 
@@ -65,11 +65,11 @@ def image_and_text(image_filename, text_to_draw_top, text_to_draw_bottom):
     epd.display(epd.getbuffer(image.rotate(180)))
 
     # draw text
-    font10 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 10)
+    font13 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 13)
     font15 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 15)
 
-    draw.multiline_text((125, 0), text_to_draw_top, font = font15, fill = 0)
-    draw.multiline_text((125, 40), text_to_draw_bottom, font = font10, fill = 0)
+    draw.text((125, 0), text_to_draw_top, font = font15, fill = 0)
+    draw.text((125, 40), text_to_draw_bottom, font = font13, fill = 0)
 
     # draw image
     size = 122, 122
