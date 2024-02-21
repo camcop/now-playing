@@ -15,6 +15,8 @@ from PIL import Image,ImageDraw,ImageFont
 logging.basicConfig(level=logging.DEBUG)
 epd = epd2in13_V2.EPD()
 # fnt = ImageFont.truetype("Pillow/Tests/fonts/FreeMono.ttf", 40)
+# font = 'font.ttc'
+font = 'franie-black.otf'
 
 def clear_screen():    
     epd.init(epd.FULL_UPDATE)
@@ -22,8 +24,8 @@ def clear_screen():
 
 
 def text(text_to_draw):
-    font15 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 15)
-    # font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
+    font15 = ImageFont.truetype(os.path.join(picdir, font), 15)
+    # font24 = ImageFont.truetype(os.path.join(picdir, font), 24)
 
     image = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame    
     draw = ImageDraw.Draw(image)    
@@ -33,8 +35,8 @@ def text(text_to_draw):
 
 
 def text_top_bottom(text_to_draw_top, text_to_draw_bottom):
-    font20 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 20)
-    font30 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 30)
+    font20 = ImageFont.truetype(os.path.join(picdir, font), 20)
+    font30 = ImageFont.truetype(os.path.join(picdir, font), 30)
 
     image = Image.new('1', (epd.height, epd.width), 255)
     draw = ImageDraw.Draw(image)    
@@ -65,8 +67,8 @@ def image_and_text(image_filename, text_to_draw_top, text_to_draw_bottom):
     epd.display(epd.getbuffer(image.rotate(180)))
 
     # draw text
-    font13 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 13)
-    font15 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 15)
+    font13 = ImageFont.truetype(os.path.join(picdir, font), 13)
+    font15 = ImageFont.truetype(os.path.join(picdir, font), 15)
 
     draw.text((125, 40), text_to_draw_top, font = font15, fill = 0)
     draw.text((125, 65), text_to_draw_bottom, font = font13, fill = 0)
@@ -75,7 +77,7 @@ def image_and_text(image_filename, text_to_draw_top, text_to_draw_bottom):
     size = 122, 122
     bmp = Image.open(image_filename)
     bmp.thumbnail(size)
-    image.paste(bmp)    
+    image.paste(bmp)
 
     epd.display(epd.getbuffer(image.rotate(180)))
 
