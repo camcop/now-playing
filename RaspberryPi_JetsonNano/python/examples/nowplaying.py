@@ -33,35 +33,38 @@ def main():
     draw.clear_screen()
 
     while True:
-        logging.info("Checking API for last played: ")
-        lastplayed_track, lastplayed_artist, lastplayed_album, lastplayed_image = lastfm_user_data.lastplayed(requested_username)
-        logging.info("Last played track: " + lastplayed_track)
-        logging.info("Last played artist: " + lastplayed_artist)
-        logging.info("Last played album: " + lastplayed_album)
-        logging.info("Last played image: " + lastplayed_image)
+        try:
+            logging.info("Checking API for last played: ")
+            lastplayed_track, lastplayed_artist, lastplayed_album, lastplayed_image = lastfm_user_data.lastplayed(requested_username)
+            logging.info("Last played track: " + lastplayed_track)
+            logging.info("Last played artist: " + lastplayed_artist)
+            logging.info("Last played album: " + lastplayed_album)
+            logging.info("Last played image: " + lastplayed_image)
 
-        if lastplayed_track == previous_track_name:  #check if the track name is same as what we displayed last time
-            logging.info("No change to data - not refreshing")
-        else:
-            logging.info("New data found from api - refreshing screen...")
-
-            # logging.info("Clearing screen")
-            # draw.clear_screen()
-            
-            logging.info("Drawing: ")
-            # draw.draw_text(lastplayed_artist + " - " + lastplayed_track)
-            # draw.draw_text_position(lastplayed_artist, 'top')
-            # draw.draw_text_position(lastplayed_track, 'bottom')
-            # draw.text_top_bottom(lastplayed_track, lastplayed_artist)
-            if lastplayed_image == previous_image_name:  #check if the track name is same as what we displayed last time
-                logging.info("No change to album cover - using same image")
+            if lastplayed_track == previous_track_name:  #check if the track name is same as what we displayed last time
+                logging.info("No change to data - not refreshing")
             else:
-                get_album_cover.fetch_image(lastplayed_image)
-            # draw.image(album_cover)
-            draw.image_and_text(album_cover, lastplayed_track, lastplayed_artist)
-        
-            previous_track_name = lastplayed_track
-            previous_image_name = lastplayed_image
+                logging.info("New data found from api - refreshing screen...")
+
+                # logging.info("Clearing screen")
+                # draw.clear_screen()
+                
+                logging.info("Drawing: ")
+                # draw.draw_text(lastplayed_artist + " - " + lastplayed_track)
+                # draw.draw_text_position(lastplayed_artist, 'top')
+                # draw.draw_text_position(lastplayed_track, 'bottom')
+                # draw.text_top_bottom(lastplayed_track, lastplayed_artist)
+                if lastplayed_image == previous_image_name:  #check if the track name is same as what we displayed last time
+                    logging.info("No change to album cover - using same image")
+                else:
+                    get_album_cover.fetch_image(lastplayed_image)
+                # draw.image(album_cover)
+                draw.image_and_text(album_cover, lastplayed_track, lastplayed_artist)
+            
+                previous_track_name = lastplayed_track
+                previous_image_name = lastplayed_image
+        except:
+            logging.info("Exception occurred. Trying again.")
 
 
         logging.info("Waiting " + str(frequency) + " seconds")
