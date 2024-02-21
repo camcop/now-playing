@@ -18,6 +18,11 @@ epd = epd2in13_V2.EPD()
 # font = 'font.ttc'
 font = 'franie-regular.otf'
 
+font_profiles = {
+    'default': ('Font.ttc', 15, 13),
+    'franie': ('franie-regular.otf', 12, 10)
+}
+
 def clear_screen():    
     epd.init(epd.FULL_UPDATE)
     epd.Clear(0xFF)
@@ -61,14 +66,16 @@ def image(image_filename):
 
 
 def image_and_text(image_filename, text_to_draw_top, text_to_draw_bottom):
+    font = font_profiles.get('franie')
+    
     image = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame    
     draw = ImageDraw.Draw(image)
     
     epd.display(epd.getbuffer(image.rotate(180)))
 
     # draw text
-    font13 = ImageFont.truetype(os.path.join(picdir, font), 13)
-    font15 = ImageFont.truetype(os.path.join(picdir, font), 15)
+    font13 = ImageFont.truetype(os.path.join(picdir, font[0]), font[2])
+    font15 = ImageFont.truetype(os.path.join(picdir, font[0]), font[1])
 
     draw.text((125, 40), text_to_draw_top, font = font15, fill = 0)
     draw.text((125, 65), text_to_draw_bottom, font = font13, fill = 0)
