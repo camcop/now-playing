@@ -2,9 +2,9 @@ import lastfm_user_data
 import draw
 import time
 import logging
-import sys
 import os
 from dotenv import load_dotenv
+import get_album_cover
 
 try:
     load_dotenv()
@@ -50,8 +50,10 @@ def main():
             # draw.draw_text(lastplayed_artist + " - " + lastplayed_track)
             # draw.draw_text_position(lastplayed_artist, 'top')
             # draw.draw_text_position(lastplayed_track, 'bottom')
-            draw.text_top_bottom(lastplayed_track, lastplayed_artist)
-            # draw.image(lastplayed_image)
+            # draw.text_top_bottom(lastplayed_track, lastplayed_artist)
+        
+            album_cover = get_album_cover.fetch_image(lastplayed_image)
+            draw.image(album_cover)
         
             previous_track_name = lastplayed_track
 
