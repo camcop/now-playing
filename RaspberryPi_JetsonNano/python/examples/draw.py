@@ -50,7 +50,7 @@ def image(image_filename):
     epd.display(epd.getbuffer(image.rotate(180)))
 
     image1 = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame
-    bmp = Image.open(image_filename))
+    bmp = Image.open(image_filename)
     image1.paste(bmp, (2,2))    
     epd.display(epd.getbuffer(image1.rotate(180)))
 
