@@ -16,7 +16,7 @@ logging.basicConfig(level=logging.DEBUG)
 epd = epd2in13_V2.EPD()
 # fnt = ImageFont.truetype("Pillow/Tests/fonts/FreeMono.ttf", 40)
 # font = 'font.ttc'
-font = 'franie-black.otf'
+font = 'franie-regular.otf'
 
 def clear_screen():    
     epd.init(epd.FULL_UPDATE)
