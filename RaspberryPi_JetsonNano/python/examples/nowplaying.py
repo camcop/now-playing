@@ -33,7 +33,11 @@ def main():
     while True:
         logging.info("Checking API for last played: ")
         lastplayed_track, lastplayed_artist, lastplayed_album, lastplayed_image = lastfm_user_data.lastplayed(requested_username)
-        
+        logging.info("Last played track: " + lastplayed_track)
+        logging.info("Last played artist: " + lastplayed_artist)
+        logging.info("Last played album: " + lastplayed_album)
+        logging.info("Last played image: " + lastplayed_image)
+
         if lastplayed_track == previous_track_name:  #check if the track name is same as what we displayed last time
             logging.info("No change to data - not refreshing")
         else:
@@ -47,7 +51,7 @@ def main():
             # draw.draw_text_position(lastplayed_artist, 'top')
             # draw.draw_text_position(lastplayed_track, 'bottom')
             draw.text_top_bottom(lastplayed_track, lastplayed_artist)
-            draw.image(lastplayed_image)
+            # draw.image(lastplayed_image)
         
             previous_track_name = lastplayed_track
 

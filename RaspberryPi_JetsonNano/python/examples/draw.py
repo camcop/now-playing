@@ -47,7 +47,7 @@ def image(image_to_draw):
     image = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame    
     draw = ImageDraw.Draw(image)
 
-    epd.display(epd.getbuffer(image_to_draw))
+    epd.display(epd.getbuffer(image_to_draw.rotate(180)))
 
 # try:
 #     epd = epd2in13_V2.EPD()
