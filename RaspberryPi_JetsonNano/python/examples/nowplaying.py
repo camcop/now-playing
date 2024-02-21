@@ -6,22 +6,22 @@ import os
 from dotenv import load_dotenv
 import get_album_cover
 
-logging.basicConfig(level=logging.DEBUG)
-frequency = 5
-previous_track_name = ''
-previous_image_name = ''
-album_cover = 'album_cover.jpg'
-lastplayed_track = ''
-lastplayed_artist = ''
-lastplayed_album = ''
-lastplayed_image = ''
-
 try:
     load_dotenv()
 except:
     logging.warning("Dotenv error")
 
 def main():
+    logging.basicConfig(level=logging.DEBUG)
+    frequency = 5
+    previous_track_name = ''
+    previous_image_name = ''
+    album_cover = 'album_cover.jpg'
+    lastplayed_track = ''
+    lastplayed_artist = ''
+    lastplayed_album = ''
+    lastplayed_image = ''
+
     requested_username = os.environ.get("LAST_FM_USERNAME")
     if requested_username is None:
         logging.error("No username specified. Exiting")
