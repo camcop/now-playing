@@ -51,9 +51,9 @@ def main():
             # draw.draw_text_position(lastplayed_artist, 'top')
             # draw.draw_text_position(lastplayed_track, 'bottom')
             # draw.text_top_bottom(lastplayed_track, lastplayed_artist)
-        
             album_cover = get_album_cover.fetch_image(lastplayed_image)
-            draw.image(album_cover)
+            # draw.image(album_cover)
+            draw.image_and_text(album_cover, lastplayed_track, lastplayed_artist)
         
             previous_track_name = lastplayed_track
 

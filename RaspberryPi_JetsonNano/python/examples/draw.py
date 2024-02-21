@@ -43,6 +43,7 @@ def text_top_bottom(text_to_draw_top, text_to_draw_bottom):
     draw.multiline_text((0, 50), text_to_draw_bottom, font = font20, fill = 0)
     epd.display(epd.getbuffer(image.rotate(180)))
 
+
 def image(image_filename):
     image = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame    
     draw = ImageDraw.Draw(image)
@@ -55,6 +56,30 @@ def image(image_filename):
     bmp.thumbnail(size)
     image1.paste(bmp)    
     epd.display(epd.getbuffer(image1.rotate(180)))
+
+
+def image_and_text(image_filename, text_to_draw_top, text_to_draw_bottom):
+    image = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame    
+    draw = ImageDraw.Draw(image)
+    
+    epd.display(epd.getbuffer(image.rotate(180)))
+
+    # draw text
+    font10 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 10)
+    font15 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 15)
+
+    draw.multiline_text((50, 0), text_to_draw_top, font = font15, fill = 0)
+    draw.multiline_text((50, 50), text_to_draw_bottom, font = font10, fill = 0)
+
+    # draw image
+    size = 122, 122
+    bmp = Image.open(image_filename)
+    bmp.thumbnail(size)
+    image.paste(bmp)    
+
+    epd.display(epd.getbuffer(image.rotate(180)))
+
+
 
 # try:
 #     epd = epd2in13_V2.EPD()
