@@ -68,8 +68,8 @@ def image_and_text(image_filename, text_to_draw_top, text_to_draw_bottom):
     font13 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 13)
     font15 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 15)
 
-    draw.text((125, 0), text_to_draw_top, font = font15, fill = 0)
-    draw.text((125, 40), text_to_draw_bottom, font = font13, fill = 0)
+    draw.text((125, 47), text_to_draw_top, font = font15, fill = 0)
+    draw.text((125, 70), text_to_draw_bottom, font = font13, fill = 0)
 
     # draw image
     size = 122, 122
