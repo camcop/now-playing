@@ -5,6 +5,7 @@ import logging
 import os
 from dotenv import load_dotenv
 import get_album_cover
+from datetime import datetime
 
 try:
     load_dotenv()
@@ -57,7 +58,7 @@ def main():
         if lastplayed_track == previous_track_name:  #check if the track name is same as what we displayed last time
             logging.info("No change to data - not refreshing")
         else:
-            refreshed_time = time.now()
+            refreshed_time = datetime.now()
 
             logging.info("New data found from api - refreshing screen...")
 
@@ -80,7 +81,7 @@ def main():
             previous_image_name = lastplayed_image
 
 
-        if time.now() - refreshed_time >= refresh_slowdown_period:
+        if datetime.now() - refreshed_time >= refresh_slowdown_period:
             refresh_frequency = refresh_frequency_low
         else:
             refresh_frequency = refresh_frequency_default
