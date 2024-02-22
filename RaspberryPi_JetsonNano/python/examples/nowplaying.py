@@ -13,7 +13,13 @@ except:
 
 def main():
     logging.basicConfig(level=logging.DEBUG)
-    frequency = 5
+    
+    refresh_frequency_default = 5
+    refresh_frequency_low = 60
+    refresh_frequency = refresh_frequency_default
+    refresh_slowdown_period = 120 * refresh_frequency
+    refreshed_time = 0
+    
     previous_track_name = ''
     previous_image_name = ''
     album_cover = 'album_cover.jpg'
@@ -51,6 +57,8 @@ def main():
         if lastplayed_track == previous_track_name:  #check if the track name is same as what we displayed last time
             logging.info("No change to data - not refreshing")
         else:
+            refreshed_time = time.now()
+
             logging.info("New data found from api - refreshing screen...")
 
             # logging.info("Clearing screen")
@@ -72,8 +80,13 @@ def main():
             previous_image_name = lastplayed_image
 
 
-        logging.info("Waiting " + str(frequency) + " seconds")
-        time.sleep(frequency)
+        if time.now() - refreshed_time >= refresh_slowdown_period:
+            refresh_frequency = refresh_frequency_low
+        else:
+            refresh_frequency = refresh_frequency_default
+
+        logging.info("Waiting " + str(refresh_frequency) + " seconds")
+        time.sleep(refresh_frequency)
 
 if __name__== "__main__":
     main()
