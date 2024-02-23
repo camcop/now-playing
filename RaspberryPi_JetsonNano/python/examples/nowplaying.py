@@ -72,7 +72,11 @@ def main():
             if lastplayed_image == previous_image_name:  #check if the track name is same as what we displayed last time
                 logging.info("No change to album cover - using same image")
             else:
-                get_album_cover.fetch_image(lastplayed_image)
+                try:
+                    get_album_cover.fetch_image(lastplayed_image)
+                except:
+                    logging.info("Error fetching album cover. Showing previous cover")
+                    pass
             # draw.image(album_cover)
             draw.image_and_text(album_cover, lastplayed_track, lastplayed_artist)
         
