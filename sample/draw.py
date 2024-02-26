@@ -1,13 +1,12 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
-from os import path
+import os
 import logging
 from PIL import Image,ImageDraw,ImageFont
-
-from epd import epd2in13_V2
+import epd
 
 logging.basicConfig(level=logging.DEBUG)
-epd = epd2in13_V2.EPD()
+epd = epd.epd2in13_V2.EPD()
 
 images_dir = ('./images')
 fonts_dir = ('./fonts')
@@ -21,7 +20,7 @@ font_in_use = 'default'
 
 
 def get_font(font, size):
-    return ImageFont.truetype(path.join(fonts_dir, font_profiles.get(font)[0]), size)
+    return ImageFont.truetype(os.path.join(fonts_dir, font_profiles.get(font)[0]), size)
 
 
 def clear_screen():    

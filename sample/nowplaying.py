@@ -3,11 +3,11 @@ import draw
 import time
 import logging
 import os
-from dotenv import load_dotenv
+import dotenv
 import get_album_cover
 
 try:
-    load_dotenv()
+    dotenv.load_dotenv()
 except:
     logging.warning("Dotenv error")
 
