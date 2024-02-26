@@ -3,7 +3,7 @@
 import os
 import logging
 from PIL import Image,ImageDraw,ImageFont
-import epd
+from epd import epd2in13_V2
 
 logging.basicConfig(level=logging.DEBUG)
 epd = epd.epd2in13_V2.EPD()
