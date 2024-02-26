@@ -20,7 +20,7 @@ def main():
     
     previous_track_name = ''
     previous_image_name = ''
-    album_cover = 'album_cover.jpg'
+    album_cover = 'images/album_cover.jpg'
     lastplayed_track = ''
     lastplayed_artist = ''
     lastplayed_album = ''
