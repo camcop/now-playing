@@ -1,10 +1,8 @@
-import lastfm_user_data
-import draw
+from sample import draw, lastfm_user_data, get_album_cover
 import time
 import logging
 import os
 import dotenv
-import get_album_cover
 
 try:
     dotenv.load_dotenv()
