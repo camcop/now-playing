@@ -74,8 +74,8 @@ def main():
             else:
                 try:
                     get_album_cover.fetch_image(lastplayed_image)
-                except:
-                    logging.info("Error fetching album cover. Showing previous cover")
+                except Exception as e:
+                    logging.exception("Error fetching album cover. Showing previous cover", e)
                     pass
             # draw.image(album_cover)
             draw.image_and_text(album_cover, lastplayed_track, lastplayed_artist)
