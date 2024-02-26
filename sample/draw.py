@@ -6,7 +6,7 @@ from PIL import Image,ImageDraw,ImageFont
 from epd import epd2in13_V2
 
 logging.basicConfig(level=logging.DEBUG)
-epd = epd.epd2in13_V2.EPD()
+epd = epd2in13_V2.EPD()
 
 images_dir = ('./images')
 fonts_dir = ('./fonts')
